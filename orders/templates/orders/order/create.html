@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+	Checkout
+{% endblock %}
+
+{% block content %}
+<h2>Checkout</h2>
+<h3>Your Orders</h3>
+<ul>
+{% for item in cart %}
+	<li>
+		{{ item.quantity }} X {{ item.product.name }} = {{ item.total_price }} MMK
+	</li>
+{% endfor %}
+{% if cart.coupon %}
+	<li>
+	"{{ cart.coupon.code }}" ({{ cart.coupon.discount }}% off)
+	= {{ cart.get_discount }} MMK
+	</li>
+{% endif %}
+</ul>
+<p><strong>Total MMK : {{ cart.get_total_price_after_discount }} MMK</strong></p>
+
+<form action="." method="post">
+	{{ form.as_p }}
+	<input type="submit" value="Place Order">
+	{% csrf_token %}
+</form>
+{% endblock %}

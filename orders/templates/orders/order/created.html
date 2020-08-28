@@ -1,0 +1,9 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+	Thank You
+{% endblock %}
+{% block content %}
+	<h2>Thank You</h2>
+	<p>မွာယူမွု ေအာင္ျမင္ပါသည္။ အမွာနံပါတ္စဥ္ : {{ order.id }}</p>
+	<a href="{% url 'shop:product_list' %}">ပင္မစာမ်က္နွာသို့ ထြက္မည္</a>
+{% endblock %}
